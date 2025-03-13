@@ -99,15 +99,25 @@ router.post('/log', async (req, res) => {
                 httpOnly: false,
                 maxAge: 24 * 60 * 60 * 1000,
                 secure: true,
-                // sameSite: 'lax'
+                sameSite: 'lax'
             });
 
             if (user.Role === 'admin') {
-                res.cookie('role', 'admin').send(user);
+                res.cookie('role', 'admin',{
+                    httpOnly: false,
+                    maxAge: 24 * 60 * 60 * 1000,
+                    secure: true,
+                    sameSite: 'lax'
+                }).send(user);
             }
 
             if (user.Role === 'user') {
-                res.cookie('role', 'user').send(user);
+                res.cookie('role', 'user',{
+                    httpOnly: false,
+                    maxAge: 24 * 60 * 60 * 1000,
+                    secure: true,
+                    sameSite: 'lax'
+                }).send(user);
             }
 
         })
