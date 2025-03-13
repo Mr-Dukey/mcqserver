@@ -108,7 +108,7 @@ router.post('/log', async (req, res) => {
                     maxAge: 24 * 60 * 60 * 1000,
                     secure: true,
                     sameSite: 'none'
-                }).send(user);
+                })
             }
 
             if (user.Role === 'user') {
@@ -117,8 +117,10 @@ router.post('/log', async (req, res) => {
                     maxAge: 24 * 60 * 60 * 1000,
                     secure: true,
                     sameSite: 'none'
-                }).send(user);
+                })
             }
+
+            res.send(user).status(200);
 
         })
         .catch((err) => {
