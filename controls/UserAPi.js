@@ -96,27 +96,27 @@ router.post('/log', async (req, res) => {
             const token = genToken(user);
 
             res.cookie('token', token, {
-                httpOnly: false,
+                httpOnly: true,
                 maxAge: 24 * 60 * 60 * 1000,
                 secure: true,
-                sameSite: 'lax'
+                sameSite: 'none'
             });
 
             if (user.Role === 'admin') {
                 res.cookie('role', 'admin',{
-                    httpOnly: false,
+                    httpOnly: true,
                     maxAge: 24 * 60 * 60 * 1000,
                     secure: true,
-                    sameSite: 'lax'
+                    sameSite: 'none'
                 }).send(user);
             }
 
             if (user.Role === 'user') {
                 res.cookie('role', 'user',{
-                    httpOnly: false,
+                    httpOnly: true,
                     maxAge: 24 * 60 * 60 * 1000,
                     secure: true,
-                    sameSite: 'lax'
+                    sameSite: 'none'
                 }).send(user);
             }
 
