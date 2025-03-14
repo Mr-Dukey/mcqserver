@@ -99,7 +99,8 @@ router.post('/log', async (req, res) => {
                 httpOnly: true,
                 maxAge: 24 * 60 * 60 * 1000,
                 secure: true,
-                sameSite: 'none'
+                sameSite: 'none',
+                domain:'.netlify.app'
             });
 
             if (user.Role === 'admin') {
@@ -107,7 +108,8 @@ router.post('/log', async (req, res) => {
                     httpOnly: true,
                     maxAge: 24 * 60 * 60 * 1000,
                     secure: true,
-                    sameSite: 'none'
+                    sameSite: 'none',
+                    domain:'.netlify.app'
                 })
             }
 
@@ -116,7 +118,8 @@ router.post('/log', async (req, res) => {
                     httpOnly: true,
                     maxAge: 24 * 60 * 60 * 1000,
                     secure: true,
-                    sameSite: 'none'
+                    sameSite: 'none',
+                    domain:'.netlify.app'
                 })
             }
 
