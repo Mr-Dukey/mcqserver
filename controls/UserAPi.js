@@ -95,35 +95,7 @@ router.post('/log', async (req, res) => {
             }
             const token = genToken(user);
 
-            res.cookie('token', token, {
-                httpOnly: true,
-                maxAge: 24 * 60 * 60 * 1000,
-                secure: true,
-                sameSite: 'none',
-                // domain:'.netlify.app'
-            });
-
-            // if (user.Role === 'admin') {
-            //     res.cookie('role', 'admin',{
-            //         httpOnly: true,
-            //         maxAge: 24 * 60 * 60 * 1000,
-            //         secure: true,
-            //         sameSite: 'none',
-            //         domain:'.netlify.app'
-            //     })
-            // }
-
-            // if (user.Role === 'user') {
-            //     res.cookie('role', 'user',{
-            //         httpOnly: true,
-            //         maxAge: 24 * 60 * 60 * 1000,
-            //         secure: true,
-            //         sameSite: 'none',
-            //         domain:'.netlify.app'
-            //     })
-            // }
-
-            res.send(user).status(200);
+            res.send({user,token}).status(200);
 
         })
         .catch((err) => {
