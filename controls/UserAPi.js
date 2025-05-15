@@ -58,6 +58,29 @@ router.put('/update/:id', async (req, res) => {
         });
 });
 
+//block user
+router.put('/block/:id',async function(req,res){
+    await User.findById(req.params.id)
+    .then(async (response)=>{
+        await User.findByIdAndUpdate( req.params.id,{
+            isBlocked: !response.isBlocked
+        },{new : true})
+        .then((data)=>{
+            res.send(
+                data.isBlocked ?
+                "blocked" :
+                "unblocked"
+            )
+        })
+        .catch((err) => {
+            res.status(400).json({ message: err.message });
+        });
+    })
+    .catch((err) => {
+        res.status(400).json({ message: err.message });
+    });
+})
+
 // DELETE user
 router.delete('/delete/:id', async (req, res) => {
     const isAdmin = await User.findById(req.params.id)

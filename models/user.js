@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema({
     Aptti:{
         type: Boolean,
         default:false
+    },
+    isBlocked:{
+        type:Boolean,
+        default:false
     }
 })
 
